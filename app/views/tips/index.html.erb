@@ -1,8 +1,6 @@
 <% @tips.each do |tip| %>
-    <div>
-      <h1><%= tip.name %></h1><br />
+    <div class="booyah box col-10 offset-1">
+      <h1><%= tip.title %></h1><br />
       <p><%= tip.description %></p><br />
     </div>
-
-    <hr />
   <% end %>
