@@ -1,4 +1,6 @@
 class TipsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
 
   def index
     @tips = Tip.all    
@@ -9,7 +11,7 @@ class TipsController < ApplicationController
   end
 
   def create
-    Tip.create(tip_params)
+    current_user.tips.create(tip_params)
     redirect_to root_path
   end
 
