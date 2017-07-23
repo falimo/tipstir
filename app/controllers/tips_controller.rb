@@ -21,6 +21,7 @@ class TipsController < ApplicationController
 
   def show
     @tip = Tip.find(params[:id])
+    @comment = Comment.new
   end
 
   def destroy
