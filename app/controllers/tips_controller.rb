@@ -1,5 +1,5 @@
 class TipsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
 
 
   def index
@@ -11,7 +11,26 @@ class TipsController < ApplicationController
   end
 
   def create
-    current_user.tips.create(tip_params)
+    @tip = current_user.tips.create(tip_params)
+    if @tip.valid?
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def show
+    @tip = Tip.find(params[:id])
+  end
+
+  def destroy
+    @tip = Tip.find(params[:id])
+
+    if @tip.user != current_user
+      return render text: 'Not Allowed', status: :forbidden
+    end
+
+    @tip.destroy
     redirect_to root_path
   end
 
