@@ -6,10 +6,12 @@
 
   <div class="float-right">
   <% if current_user && current_user == @tip.user %>
-   <%= link_to 'Destroy', tip_path(@tip), method: :delete, data: {confirm: 'Are you sure you want to delete this?'},class: 'btn btn-danger' %>
+   <%= link_to 'Delete Tip', tip_path(@tip), method: :delete, data: {confirm: 'Are you sure you want to delete this?'},class: 'btn btn-danger' %>
+      <br />
    <% end %>
-   <br />
+
   </div>
+  <br />
 </div>
 
 
@@ -23,7 +25,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Add a comment</h4>
+        <h4 class="modal-title" id="myModalLabel">Add your comment</h4>
       </div>
 
       <%= simple_form_for @comment, url: tip_comments_path(@tip) do |f| %>
@@ -31,7 +33,7 @@
         <%= f.input :message %>      
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
         <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
       </div>
       <% end %>
@@ -42,10 +44,10 @@
 
 
 <div class="col-10 offset-1">
-<h1 class="float-left">Comments </h1>
+<h1 class="float-left">Comments    &nbsp;</h1>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Add a Comment
+  Add
 </button>
 
 <div class="row">
