@@ -1,11 +1,10 @@
 <% @tips.each do |tip| %>
-    <div class="booyah box col-10 offset-1">
-      <h1><%= link_to tip.title, tip_path(tip) %></h1><br />
+    <div class="booyah-box col-10 offset-1">
+      <h1><%= link_to tip.title, tip_path(tip) %></h1>
       <p><%= tip.description %></p><br />
 
       <% if tip.user.present? %>
         <small><%= tip.user.email %></small>
       <% end %>
-
     </div>
   <% end %>
